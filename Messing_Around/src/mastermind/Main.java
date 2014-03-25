@@ -1,6 +1,7 @@
 package mastermind;
 
 public class Main {
+	//written by Thomas Dekker
 	public static final int MAX_NR_OF_TURNS = 10;
 	public static final int RED = 1;
 	public static final int WHITE = 2;

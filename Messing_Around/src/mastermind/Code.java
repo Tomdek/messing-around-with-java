@@ -1,7 +1,7 @@
 package mastermind;
 
 public class Code {
-	
+	//written by Thomas Dekker
 	private int[] colours = new int[4];
 	
 	public Code(int c1, int c2, int c3, int c4) { //initiate with colours
