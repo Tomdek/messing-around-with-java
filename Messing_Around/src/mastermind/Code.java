@@ -4,14 +4,14 @@ public class Code {
 	
 	private int[] colours = new int[4];
 	
-	public Code(int c1, int c2, int c3, int c4) {
+	public Code(int c1, int c2, int c3, int c4) { //initiate with colours
 		colours[0] = c1;
 		colours[1] = c2;
 		colours[2] = c3;
 		colours[3] = c4;
 	}
 	
-	public Code() {
+	public Code() { //initiate with random colours
 		//generate random code
 	}
 	
