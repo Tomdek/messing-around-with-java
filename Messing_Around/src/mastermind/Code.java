@@ -59,15 +59,13 @@ public class Code {
 		return colours[position];
 	}
 	
-	public int[] compare(Code code) {
-		int counter = 0;
-		int[] result = new int[4];
+	public Code compare(Code code) {
+		Code result = new Code(false);
 		
 		//check correctly placed colours.
 		for(int i = 0; i < colours.length; i++) {
 			if(code.getColour(i) == colours[i]) {
-				result[counter] = Main.RED;
-				counter += 1;
+				result.setNextColour(Main.RED);
 			}
 		}
 		
@@ -75,8 +73,7 @@ public class Code {
 		for(int i = 0; i < colours.length; i++) {
 			for(int j = 0; j < colours.length; j++) {
 				if(i != j && code.getColour(i) == colours[j]) {
-					result[counter] = Main.WHITE;
-					counter += 1;
+					result.setNextColour(Main.WHITE);
 				}
 			}
 		}
