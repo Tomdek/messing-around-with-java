@@ -3,16 +3,41 @@ package mastermind;
 public class Code {
 	//written by Thomas Dekker
 	private int[] colours = new int[4];
+	private int length;
 	
 	public Code(int c1, int c2, int c3, int c4) { //initiate with colours
 		colours[0] = c1;
 		colours[1] = c2;
 		colours[2] = c3;
 		colours[3] = c4;
+		length = 4;
 	}
 	
-	public Code() { //initiate with random colours
-		//generate random code
+	public Code(boolean random) { //initiate either random or empty
+		if(random) {
+			//TODO generate random code
+		} else {
+			colours[0] = 0;
+			colours[1] = 0;
+			colours[2] = 0;
+			colours[3] = 0;
+			length = 0;
+		}
+		
+	}
+	
+	public int getLength() {
+		return length;
+	}
+	
+	public int setNextColour(int colour) {
+		if(length >= 4) {
+			return length;
+		} else {
+			colours[length] = colour;
+			length++;
+			return length;
+		}
 	}
 	
 	private int getColour(int position) {
