@@ -1,5 +1,8 @@
 package mastermind;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class Code {
 	//written by Thomas Dekker
 	private int[] colours = new int[4];
@@ -14,8 +17,19 @@ public class Code {
 	}
 	
 	public Code(boolean random) { //initiate either random or empty
-		if(random) {
-			//TODO generate random code
+		if(random) { //creates 4 unique numbers
+			ArrayList<Integer> numbers = new ArrayList<>();
+			
+			for(int i = 1; i <= 8; i++) {
+				numbers.add(i);
+			}
+			
+			Collections.shuffle(numbers);
+			colours[0] = numbers.get(1);
+			colours[1] = numbers.get(2);
+			colours[2] = numbers.get(3);
+			colours[3] = numbers.get(4);
+			
 		} else {
 			colours[0] = 0;
 			colours[1] = 0;
@@ -40,7 +54,7 @@ public class Code {
 		}
 	}
 	
-	private int getColour(int position) {
+	public int getColour(int position) {
 		return colours[position];
 	}
 	
