@@ -3,7 +3,8 @@ package mastermind;
 import java.util.Scanner;
 
 public class Main {
-	//written by Thomas Dekker
+	//Written by Thomas Dekker
+	//Source code found at: https://github.com/Tomdek/messing-around-with-java/blob/master/Messing_Around/src/mastermind/Main.java
 	public static final int MAX_NR_OF_TURNS = 10;
 	public static final int RED = 1;
 	public static final int WHITE = 2;

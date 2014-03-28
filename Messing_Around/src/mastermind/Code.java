@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Code {
-	//written by Thomas Dekker
+	//Written by Thomas Dekker
+	//Source code found at: https://github.com/Tomdek/messing-around-with-java/blob/master/Messing_Around/src/mastermind/Code.java
 	private int[] colours = new int[4];
 	private int length;
 	
