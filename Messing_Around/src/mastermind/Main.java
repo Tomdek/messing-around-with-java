@@ -29,8 +29,44 @@ public class Main {
 		start();
 	}
 	
-	private void visualize(Code[] attempts, int[][] feedback) {
+	private void visualize(Code[] attempts, Code[] feedback, int turn) {
 		//TODO visualize the entire board (including all past turns)
+		String header = "|CODES   |:|FEEDBACK|\n";
+		String footer = "||_________________||\n";
+		
+		System.out.print(header); // start of board
+		
+		for (int i = 0; i < turn; i++) { //one loop per attempt to print full board history
+			System.out.print(i+1 + "|"); //print turn number
+			
+			for (int j = 0; j < 4; j++) { //print attempt
+				switch (attempts[i].getColour(j)) {
+				case RED: System.out.print("R|"); break;
+				case WHITE: System.out.print("W|"); break;
+				case YELLOW: System.out.print("Y|"); break;
+				case GREEN: System.out.print("G|"); break;
+				case PURPLE: System.out.print("P|"); break;
+				case ORANGE: System.out.print("O|"); break;
+				case MAGENTA: System.out.print("M|"); break;
+				case BLUE: System.out.print("B|"); break;
+				default: System.out.print(" |"); break;
+				}
+			}
+			
+			System.out.print(":|"); //bit in between code and feedback
+			
+			for (int j = 0; j < 4; j++) { //print feedback
+				switch (feedback[i].getColour(j)) {
+				case RED: System.out.print("R|"); break;
+				case WHITE: System.out.print("W|"); break;
+				default: System.out.print(" |"); break;
+				}
+			}
+			
+			System.out.print("|\n"); //end of line
+		}
+		
+		System.out.print(footer); //end of board
 	}
 	
 	private Code askAttempt() {
@@ -81,7 +117,7 @@ public class Main {
 		
 		Code secretCode = new Code(true);
 		Code[] attempts = new Code[MAX_NR_OF_TURNS];
-		int[][] feedback = new int[MAX_NR_OF_TURNS][4];
+		Code[] feedback = new Code[MAX_NR_OF_TURNS];
 		int turn = 0;
 		boolean hasWon = false;
 		
@@ -89,16 +125,15 @@ public class Main {
 			attempts[turn] = askAttempt();
 			feedback[turn] = secretCode.compare(attempts[turn]);
 			
-			visualize(attempts, feedback);
-			
 			hasWon = true;
 			for(int i = 0; i < 4; i++) {
-				if(feedback[turn][i] != RED) {
+				if(feedback[turn].getColour(i) != RED) {
 					hasWon = false;
 				}
 			}
 			
-			turn += 1;
+			turn++;
+			visualize(attempts, feedback, turn);
 		}
 		
 		gameOver(hasWon);
