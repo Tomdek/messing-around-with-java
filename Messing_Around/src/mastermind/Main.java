@@ -18,29 +18,22 @@ public class Main {
 	private Scanner sc = new Scanner(System.in);
 	private String overview = "Overview of colours: red, white, yellow, green, purple, orange, magenta, blue.\n";
 	
-	private void gameOver(boolean hasWon) {
+	private void gameOver(boolean hasWon, Code secretCode) {
 		if (hasWon) {
 			System.out.print(" ---------------- \n|    You won!    |\n|Congratulations!|\n ---------------- \n");
 		} else {
-			System.out.print(" ---------------- \n|   Game Over    |\n ---------------- \n");
+			System.out.print(" ---------------------\n|      Game Over      |\n|The correct code was:|\n|      |");
+			printAttempt(secretCode);
+			System.out.print("      |\n ---------------------\n");
 		}
 		System.out.print("Press Enter to play again.");
 		sc.nextLine();
 		start();
 	}
 	
-	private void visualize(Code[] attempts, Code[] feedback, int turn) {
-		//TODO visualize the entire board (including all past turns)
-		String header = "|CODES   |:|FEEDBACK|\n";
-		String footer = "||_________________||\n";
-		
-		System.out.print(header); // start of board
-		
-		for (int i = 0; i < turn; i++) { //one loop per attempt to print full board history
-			System.out.print(i+1 + "|"); //print turn number
-			
-			for (int j = 0; j < 4; j++) { //print attempt
-				switch (attempts[i].getColour(j)) {
+	private void printAttempt(Code attempt) {
+		for (int i = 0; i < 4; i++) { //print attempt
+				switch (attempt.getColour(i)) {
 				case RED: System.out.print("R|"); break;
 				case WHITE: System.out.print("W|"); break;
 				case YELLOW: System.out.print("Y|"); break;
@@ -52,20 +45,31 @@ public class Main {
 				default: System.out.print(" |"); break;
 				}
 			}
-			
-			System.out.print(":|"); //bit in between code and feedback
-			
-			for (int j = 0; j < 4; j++) { //print feedback
-				switch (feedback[i].getColour(j)) {
+	}
+	
+	private void printFeedback(Code feedback) {
+		for (int i = 0; i < 4; i++) { //print feedback
+				switch (feedback.getColour(i)) {
 				case RED: System.out.print("R|"); break;
 				case WHITE: System.out.print("W|"); break;
 				default: System.out.print(" |"); break;
 				}
 			}
-			
+	}
+	
+	private void visualize(Code[] attempts, Code[] feedback, int turn) {
+		//TODO visualize the entire board (including all past turns)
+		String header = "|CODES   |:|FEEDBACK|\n";
+		String footer = "||_________________||\n";
+		
+		System.out.print(header); // start of board
+		for (int i = 0; i < turn; i++) { //one loop per attempt to print full board history
+			System.out.print(i+1 + "|"); //print turn number
+			printAttempt(attempts[i]);
+			System.out.print(":|"); //bit in between code and feedback
+			printFeedback(feedback[i]);
 			System.out.print("|\n"); //end of line
 		}
-		
 		System.out.print(footer); //end of board
 	}
 	
@@ -136,7 +140,7 @@ public class Main {
 			visualize(attempts, feedback, turn);
 		}
 		
-		gameOver(hasWon);
+		gameOver(hasWon, secretCode);
 		
 	}
 	
