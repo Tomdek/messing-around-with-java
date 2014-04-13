@@ -1,19 +1,26 @@
 package extra;
 
 public class Lab32A extends Lab32 {
-	int nextState() {		
-		switch (super.huidigestaat) {
-			case 1: return 23;
-			case 23: return 3; 
-			case 3: return super.huidigestaat;
-			case 42: return 34; 
-			case 2: return 3; 
-			case 34: return 4; 
-			case 45: return 4; 
-			case 4: return 4; 
-			case 25: return 3; 
-			case 5: return 5;  
-			default: return super.huidigestaat;
+	
+	private int huidigestaat;
+	
+	Lab32A(int staat) {
+		huidigestaat = staat; 
+	}
+	
+	int nextState() {
+		switch (huidigestaat) {
+			case A: return 23;
+			case B: return 3; 
+			case C: return huidigestaat;
+			case D: return 34; 
+			case E: return 3; 
+			case F: return 4; 
+			case G: return 4; 
+			case H: return 4; 
+			case I: return 3; 
+			case J: return 5;  
+			default: return huidigestaat;
 		}
 	}
 }

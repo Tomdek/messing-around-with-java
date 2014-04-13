@@ -4,20 +4,28 @@ package extra;
 // Modified by Thomas Dekker
 public class Lab32 {
 	
+	public static final int A=1;
+	public static final int B=23;
+	public static final int C=3;
+	public static final int D=42;
+	public static final int E=2;
+	public static final int F=34;
+	public static final int G=45;
+	public static final int H=4;
+	public static final int I=25;
+	public static final int J=5;
+	
 	public int huidigestaat = 1;
 
 	void start() {
-		int a=1;int b=23;int c=3;int d=42;int e=2;int f=34;int g=45;int h=4;int i=25;int j=5;
 		String input="abbb";
-		for(int k=0;k<input.length();k++){
+		for(int k=0;k<input.length();k++) {
 			if (input.charAt(k)=='a') {
-				Lab32A action = new Lab32A();
+				Lab32A action = new Lab32A(huidigestaat);
 				huidigestaat = action.nextState();
-				//System.out.print(huidigestaat + " a\n");
 			} else {
-				Lab32B action = new Lab32B();
+				Lab32B action = new Lab32B(huidigestaat);
 				huidigestaat = action.nextState();
-				//System.out.print(huidigestaat + " b\n");
 			}
 		}
 		if ((huidigestaat==5)||(huidigestaat==25)||(huidigestaat==45)){
