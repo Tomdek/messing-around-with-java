@@ -1,4 +1,7 @@
 package extra;
+
+import java.util.Scanner;
+
 //13-4-2014
 // Original code by Charlotte Hanekamp @ http://pastebin.com/pnZjApsT
 // Modified by Thomas Dekker
@@ -15,10 +18,12 @@ public class Lab32 {
 	public static final int I=25;
 	public static final int J=5;
 	
-	public int huidigestaat = 1;
-
+	public int huidigestaat = A;
+	private Scanner in = new Scanner(System.in);
+	
 	void start() {
-		String input="abbb";
+		System.out.print("Starting state: " + A + "\ninput: " );
+		String input= in.nextLine();
 		for(int k=0;k<input.length();k++) {
 			if (input.charAt(k)=='a') {
 				Lab32A action = new Lab32A(huidigestaat);
@@ -29,8 +34,10 @@ public class Lab32 {
 			}
 		}
 		if ((huidigestaat==J)||(huidigestaat==I)||(huidigestaat==G)){
-			System.out.println("Final state gehaald!");}
-		else System.out.println("Final state niet gehaald!");
+			System.out.println("Final state gehaald!");
+		} else {
+			System.out.println("Final state niet gehaald!");
+		}
 		System.out.println("Final state: "+huidigestaat);
 	}
 	
