@@ -10,16 +10,16 @@ public class Lab32A extends Lab32 {
 	
 	int nextState() {
 		switch (huidigestaat) {
-			case A: return 23;
-			case B: return 3; 
-			case C: return huidigestaat;
-			case D: return 34; 
-			case E: return 3; 
-			case F: return 4; 
-			case G: return 4; 
-			case H: return 4; 
-			case I: return 3; 
-			case J: return 5;  
+			case A: return B;
+			case B: return C; 
+			case C: return C;
+			case D: return F; 
+			case E: return C; 
+			case F: return H; 
+			case G: return H; 
+			case H: return H; 
+			case I: return I; 
+			case J: return J;  
 			default: return huidigestaat;
 		}
 	}

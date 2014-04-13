@@ -28,7 +28,7 @@ public class Lab32 {
 				huidigestaat = action.nextState();
 			}
 		}
-		if ((huidigestaat==5)||(huidigestaat==25)||(huidigestaat==45)){
+		if ((huidigestaat==J)||(huidigestaat==I)||(huidigestaat==G)){
 			System.out.println("Final state gehaald!");}
 		else System.out.println("Final state niet gehaald!");
 		System.out.println("Final state: "+huidigestaat);
